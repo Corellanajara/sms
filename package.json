@@ -14,6 +14,7 @@
     "excel2json": "^0.3.1",
     "express": "^4.16.3",
     "formidable": "^1.2.1",
+    "nodemailer": "^4.6.8",
     "xlsx": "^0.13.5"
   },
   "devDependencies": {

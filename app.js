@@ -1,6 +1,5 @@
 const express = require('express')
 const bodyParser = require('body-parser');
-var http = require('http');
 var formidable = require('formidable');
 var fs = require('fs');
 var XLSX = require('xlsx');
@@ -44,22 +43,25 @@ app.post('/', function (req, res) {
         if (err) throw err;
         var hoja = XLSX.readFile(newpath);
         var nombres = hoja.SheetNames;
+        var resultado = "";
         var datos = XLSX.utils.sheet_to_json(hoja.Sheets[nombres[0]]);
         for (var i = 0; i < datos.length; i++) {
           let numero = datos[i].numeros;
           let mensaje = datos[i].mensaje;
           soap.createClient(url, function(err, client) {
-              var data = { clientid : 'christian' , clientpassword : 'chri2017', ani:'56932841111' ,dnis  :numero , message :mensaje}
-              client.submitMsg(data,function(err,resultado){
-                if (err) {
+              var data = { clientid : 'christian' , clientpassword : 'chri2017', ani:'56821736345' ,dnis  :numero , message :mensaje}
+              client.submitMsg(data,function(err,r){
+                resultado = r;
+                if (err ) {
                   res.render('index', { error: err , resultado : null });
-                }else {
-                  res.render('index', { error: null , resultado : resultado });
                 }
+
               });
           });
-
         }
+        res.render('index', { error: null , resultado : resultado });
+
+
       });
     });
   } catch (e) {

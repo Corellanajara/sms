@@ -1,70 +1,223 @@
+
+
 <!DOCTYPE html>
 <html land="en">
-<head><meta http-equiv="Content-Type" content="text/html; charset=gb18030">
-
+<head>
+	<meta charset="UTF-8">
 	<title>Curva Manager</title>
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-	<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<link rel="stylesheet" href="/css/bootstrap.css">
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 </head>
-
 <body>
 
-<div id="subir">
-<div class="row">
-<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 panel-center-d">
-			<h5 style="color: #74DF00;"><strong>Subir archivo</strong></h5>
-			<br>
-			<form method="post" action="/" enctype="multipart/form-data" id="testform">
-				<!--<input class="" name="archivo" type="file" id="archivo">-->
-				<div class="input-group">
-               				<span class="input-group-btn">
-                    			<span class="btn btn-primary btn-file">Buscar&hellip;<input id="file_url" type="file" name="archivo" multiple></span>
-                			</span>
-                			<input type="text" class="form-control" readonly>
-          			</div>
-				<br>
-				<input class="btn btn-primary" name="boton" type="submit" id="boton" value="Subir">
-			</form>
-			<br>
-	<div class="alert alert-info" role="alert">
-  	<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-	<span class="sr-only">Error:</span>
+	<div>
+		<header>
+					<nav class="navbar navbar-default">
+						<div class="container">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-1">
+									<span class="sr-only">Menu</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
 
-	</div>
-	</div>
+								<a href="http://www.consolidatudeuda.com/BulkSMS/index1.php" class="navbar-brand">Smart Manager</a>
+							</div>
 
-		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 panel-center-d">
+							<div class="collapse navbar-collapse" id="navbar-1">
+
+
+								<ul class="nav navbar-nav navbar-right">
+									<li class=""><a href="http://www.consolidatudeuda.com/BulkSMS/index1.php"><span style="color:#58ACFA;" class="glyphicon glyphicon-home iconed" aria-hidden="true"></span></a></li>
+
+									<li role="presentation" class="dropdown"><a href="#" class="dropdown-toggle" id="drop1" role="button" data-toggle="dropdown" aria-expanded="false"><span class="glyphicon glyphicon-briefcase gly-color iconed" aria-hidden="true"></span> Campa&ntilde;as</a>
+										<ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+											<li role="presentation"><a href="?menu=crearcasonegocio" role="menuitem" tabindex="-1" >Crear campa&ntilde;a</a></li>
+											<li role="presentation"><a href="?menu=reportecampana" role="menuitem" tabindex="-1" >Reportes</a></li>
+
+
+										</ul>
+									</li>
+
+									<li role="presentation" class="dropdown"><a href="#" class="dropdown-toggle" id="drop1" role="button" data-toggle="dropdown" aria-expanded="false"><span class="glyphicon glyphicon-phone gly-color iconed" aria-hidden="true"></span> SMS</a>
+										<ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+											<li role="presentation"><a href="?menu=subir" role="menuitem" tabindex="-1" >Subir archivo</a></li>
+											<li role="presentation"><a href="?menu=verlistassms" role="menuitem" tabindex="-1" >Lista interna</a></li>
+											<li role="presentation"><a href="?menu=campana3" role="menuitem" tabindex="-1" >Reportes</a></li>
+
+										</ul>
+									</li>
+									<li role="presentation" class="dropdown"><a href="#" class="dropdown-toggle" id="drop1" role="button" data-toggle="dropdown" aria-expanded="false"><span class="glyphicon glyphicon-envelope gly-color iconed" aria-hidden="true"></span> Email</a>
+									<ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+
+									<li role="presentation"><a href="?menu=crearemail" role="menuitem" tabindex="-1" >Crear email</a></li>
+									</ul>
+
+									</li>
+									<li role="presentation" class="dropdown"><a href="#" class="dropdown-toggle" id="drop1" role="button" data-toggle="dropdown" aria-expanded="false"><span class="glyphicon glyphicon-list-alt gly-color iconed" aria-hidden="true"></span> Lista</a>
+									<ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+									<!--<li role="presentation"><a href="?menu=crearlista" role="menuitem" tabindex="-1" >Crear lista</a></li>-->
+									<li role="presentation"><a href="?menu=cargarlista" role="menuitem" tabindex="-1" >Crear lista</a></li>
+									<!--<li role="presentation"><a href="?menu=verlistas" role="menuitem" tabindex="-1" >Ver lista</a></li>-->
+									<li role="presentation"><a href="?menu=verlistas" role="menuitem" tabindex="-1" >Ver lista</a></li>
+									<li role="presentation"><a href="?menu=cargarlistacontrol" role="menuitem" tabindex="-1" >Crear lista Control</a></li>
+									<li role="presentation"><a href="?menu=verlistacontrol" role="menuitem" tabindex="-1" >Ver lista Control</a></li>
+									<li role="presentation"><a href="?menu=reporteslistas" role="menuitem" tabindex="-1" >Reporte Listas</a></li>
+									</ul>
+									</li>
+
+									<!--<li role="presentation" class="dropdown"><a href="#" class="dropdown-toggle" id="drop1" role="button" data-toggle="dropdown" aria-expanded="false"><span class="glyphicon glyphicon-grain gly-color" aria-hidden="true"></span> ebeacon</a>
+										<ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+											<li role="presentation"><a href="?menu=creabeacon" role="menuitem" tabindex="-1" >Crear ebeacon</a></li>
+											<li role="presentation"><a href="?menu=creapromobeacon" role="menuitem" tabindex="-1" >Crear campana</a></li>
+											<li role="presentation"><a href="?menu=verpromobeacon" role="menuitem" tabindex="-1" >Ver promociones</a></li>
+										</ul>
+									</li>-->
+
+									<li role="presentation" class="dropdown"><a href="#" class="dropdown-toggle" id="drop1" role="button" data-toggle="dropdown" aria-expanded="false"><span class="glyphicon glyphicon-phone gly-color" aria-hidden="true"></span> Mobile</a>
+										<ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+											<li role="presentation"><a href="?menu=drawapp" role="menuitem" tabindex="-1" >Uso App</a></li>
+										</ul>
+									</li>
+
+									<!--<li class=""><a href="?menu=campana3"><span class="glyphicon glyphicon-book iconed" aria-hidden="true"></span> Campanas</a></li>-->
+
+									<li role="presentation" class="dropdown"><a href="#" class="dropdown-toggle" id="drop1" role="button" data-toggle="dropdown" aria-expanded="false"><span class="glyphicon glyphicon-file gly-color" aria-hidden="true"></span> Templates</a>
+										<ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+											<li role="presentation"><a href="?menu=creartemplates" role="menuitem" tabindex="-1" >Crear template</a></li>
+											<li role="presentation"><a href="?menu=vertemplates" role="menuitem" tabindex="-1" >Ver template</a></li>
+										</ul>
+									</li>
+
+									<!--<li role="presentation" class="dropdown"><a href="#" class="dropdown-toggle" id="drop1" role="button" data-toggle="dropdown" aria-expanded="false"><span class="glyphicon glyphicon-thumbs-up gly-color" aria-hidden="true"></span> Social</a>
+										<ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+											<li role="presentation"><a href="#" role="menuitem" tabindex="-1" > Facebok</a></li>
+											<li role="presentation"><a href="#" role="menuitem" tabindex="-1" >Twitter</a></li>
+
+											<li role="presentation"><a href="#" role="menuitem" tabindex="-1" >Google</a></li>
+										</ul>
+									</li>-->
+								</ul>
+							</div>
+						</div>
+					</nav>
+				</header>
+
+
+<div class="container">
+<section>
+  <div id="subir">
+  <div class="row">
+  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 panel-center-d">
+        <h5 style="color: #74DF00;"><strong>Subir archivo</strong></h5>
+        <br>
+        <form method="post" action="/" enctype="multipart/form-data" id="testform">
+          <!--<input class="" name="archivo" type="file" id="archivo">-->
+          <div class="input-group">
+                        <span class="input-group-btn">
+                            <span class="btn btn-primary btn-file">Buscar&hellip;<input id="file_url" type="file" name="archivo" multiple></span>
+                        </span>
+                        <input type="text" class="form-control" readonly>
+                  </div>
+          <br>
+          <input class="btn btn-primary" name="boton" type="submit" id="boton" value="Subir">
+        </form>
+        <br>
+        <% if(error !== null){ %>
+          <div class="alert alert-info" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span class="sr-only">Error:<%= error %></span>
+          </div>
+        <% } %>
+
+        <% if(resultado !== null){ %>
+          <div class="alert alert-primary" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span class="sr-only">resultado: Se ha enviado con exito</span>
+          </div>
+        <% } %>
+
+
+    </div>
+
+      <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 panel-center-d">
+      </div>
+
+      <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 panel-center-d">
+      </div>
+
+
+
+    </div>
+  </div>
+    <script type="text/javascript">
+    $(document).on('change', '.btn-file :file', function() {
+    var input = $(this),
+          numFiles = input.get(0).files ? input.get(0).files.length : 1,
+        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+      input.trigger('fileselect', [numFiles, label]);
+    });
+    $(document).ready( function() {
+        $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
+          var input = $(this).parents('.input-group').find(':text'),
+          log = numFiles > 1 ? numFiles + ' files selected' : label;
+          if( input.length ) {
+          input.val(log);
+          } else {
+          if( log ) alert(log);
+          }
+         });
+  });
+  </script>
+			</section>
 		</div>
+			<footer class="panel-footer parr1">
 
-		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 panel-center-d">
-		</div>
+					<div class="row">
+					<div class="container">
+						<div class="col-xs-12 col-sm-6 col-md-3">
 
+							<p class="panel-footer-p"><strong>Contacto</strong></p>
+							<p><span class="glyphicon glyphicon-map-marker panel-footer-gly" aria-hidden="true"></span> Avenida La Dehesa 181, Las Condes</p>
+							<p><span class="glyphicon glyphicon-envelope panel-footer-gly" aria-hidden="true"></span> christian.fuenzalidat@gmail.com</p>
+							<p><span class="glyphicon glyphicon-phone-alt panel-footer-gly" aria-hidden="true"></span> 56-9-76495488</p>
+						</div>
+
+						<div class="col-xs-12 col-sm-6 col-md-3">
+
+							<p class="panel-footer-p"><strong>Modulos</strong></p>
+							<p>SMS</p>
+							<p>Email</p>
+							<p>Listas</p>
+							<p>ebeacon</p>
+							<p>Aplicaciones</p>
+							<p>Template</p>
+							<p>Social</p>
+						</div>
+
+						<div class="col-xs-12 col-sm-6 col-md-3">
+
+							<p class="panel-footer-p"><strong>Nosotros</strong></p>
+							<p>Empresa</p>
+							<p>Politicas</p>
+							<p></p>
+						</div>
+
+						<div class="col-xs-12 col-sm-6 col-md-3">
+
+							<p class="panel-footer-p"<small><strong>Copyright © 2016 Curva</strong></small></p>
+							<p><small>All rights reserved</small></p>
+						</div>
+					</div>
+					</div>
+
+			</footer>
 
 
 	</div>
-</div>
-
-
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-	<script type="text/javascript">
-	$(document).on('change', '.btn-file :file', function() {
- 	var input = $(this),
-      	numFiles = input.get(0).files ? input.get(0).files.length : 1,
-     	label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-  	input.trigger('fileselect', [numFiles, label]);
-	});
-	$(document).ready( function() {
-    	$('.btn-file :file').on('fileselect', function(event, numFiles, label) {
-        var input = $(this).parents('.input-group').find(':text'),
-        log = numFiles > 1 ? numFiles + ' files selected' : label;
-        if( input.length ) {
-        input.val(log);
-        } else {
-        if( log ) alert(log);
-        }
-       });
-});
-</script>
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

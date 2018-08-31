@@ -1,17 +1,65 @@
+const express = require('express')
+const bodyParser = require('body-parser');
 var http = require('http');
 var formidable = require('formidable');
 var fs = require('fs');
 var XLSX = require('xlsx');
 var soap = require('soap');
 var url = "http://smpp2.telecochile.cl:4046/?wsdl";
+const app = express()
+app.use(express.static('public'));
+app.set('view engine', 'ejs')
+app.use(bodyParser.urlencoded({ extended: true }));
 
+app.get('/', function (req, res) {
+  res.render('index', { error: null,resultado : null});
+})
+
+app.post('/', function (req, res) {
+  var form = new formidable.IncomingForm();
+  form.parse(req, function (err, fields, files) {
+    var oldpath = files.archivo.path;
+    console.log(oldpath);
+    var newpath = __dirname + files.archivo.name;
+    console.log(newpath);
+    fs.rename(oldpath, newpath, function (err) {
+      if (err) throw err;
+      var hoja = XLSX.readFile(newpath);
+      var nombres = hoja.SheetNames;
+      var datos = XLSX.utils.sheet_to_json(hoja.Sheets[nombres[0]]);
+      for (var i = 0; i < datos.length; i++) {
+        let numero = datos[i].numeros;
+        let mensaje = datos[i].mensaje;
+        soap.createClient(url, function(err, client) {
+              var data = { clientid : 'christian' , clientpassword : 'chri2017', ani:'56932841111' ,dnis  :numero , message :mensaje}
+              client.submitMsg(data,function(err,resultado){
+                if (err) {
+                  res.render('index', { error: err , resultado : null });
+                }else {
+                  res.render('index', { error: null , resultado : resultado });
+                }
+              });
+          });
+
+      }
+    });
+  });
+
+
+
+})
+app.listen(3001, function () {
+  console.log('escuchando puerto 3001!')
+})
+
+/*
 http.createServer(function (req, res) {
   if (req.url == '/fileupload') {
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
       var oldpath = files.filetoupload.path;
       console.log(oldpath);
-      var newpath = '/Users/cristopherorellana/Desktop/wsdl/' + files.filetoupload.name;
+      var newpath = __dirname + files.filetoupload.name;
       console.log(newpath);
       fs.rename(oldpath, newpath, function (err) {
         if (err) throw err;
@@ -52,16 +100,12 @@ http.createServer(function (req, res) {
                 console.log(json);
             });
         });
-          */
+
         res.end();
       });
  });
   } else {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write('<form action="fileupload" method="post" enctype="multipart/form-data">');
-    res.write('<input type="file" name="filetoupload"><br>');
-    res.write('<input type="submit">');
-    res.write('</form>');
-    return res.end();
+
   }
-}).listen(8080);
+}).listen(8081);
+  */

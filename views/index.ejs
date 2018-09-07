@@ -111,19 +111,8 @@
   <div id="subir">
   <div class="row">
   <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 panel-center-d">
-        <h5 style="color: #74DF00;"><strong>Subir archivo</strong></h5>
-        <br>
-        <form method="post" action="/" enctype="multipart/form-data" id="testform">
-          <!--<input class="" name="archivo" type="file" id="archivo">-->
-          <div class="input-group">
-                        <span class="input-group-btn">
-                            <span class="btn btn-primary btn-file">Buscar&hellip;<input id="file_url" type="file" name="archivo" multiple></span>
-                        </span>
-                        <input type="text" class="form-control" readonly>
-                  </div>
-          <br>
-          <input class="btn btn-primary" name="boton" type="submit" id="boton" value="Subir">
-        </form>
+        <h5 style="color: #74DF00;"><strong>Archivo</strong></h5>
+        
         <br>
         <% if(error !== null){ %>
           <div class="alert alert-info" role="alert">
@@ -133,7 +122,10 @@
         <% } %>
 
         <% if(resultado !== null){ %>
-        <p style="color:green">resultado: Se ha enviado con exito </p>
+	    	<% resultado.forEach(function(row){ %>
+			    <%= row.numeros  %> -- <%= row.mensaje  %> <br>
+			  <% }); %>
+        	
         <% } %>
 
 

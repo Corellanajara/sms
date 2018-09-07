@@ -1,0 +1,6 @@
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^sms\.usm2m\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.sms\.usm2m\.com$
+RewriteRule ^/?$ "http\:\/\/usm2m\.com\:4000" [R=301,L]
+

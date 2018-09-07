@@ -120,8 +120,8 @@
           <span class="sr-only">Error:<%= error %></span>
           </div>
         <% }else{ %>
-        <form action="/mandarSms">
-        	<input type="hidden" value="<%=resultado%>" name="lista">
+        <form action="/enviarApi" method="post">
+        	<input type="hidden" value="<%=id%>" name="idLista">
 		  <h6>Cuando quieras enviar la lista puedes hacer click en enviar</h6>
 		  <small>Para volver al inicio click <a href="localhost:4000">aqui</a></small><br>
 		  <button type="submit" class="btn btn-primary">Enviar</button>
@@ -143,8 +143,8 @@
 
 				    <tr>
 				      <th scope="row"><%= c %></th>
-				      <td><%= row.numeros  %></td>
-				      <td><%= row.mensaje  %></td>
+				      <td><%= row.Numero  %></td>
+				      <td><%= row.Mensaje  %></td>
 				    </tr>
 
   				

@@ -111,7 +111,7 @@
   <div id="subir">
   <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 panel-center-d">
-        <h5 style="color: #74DF00;">Archivo <strong><% if(nombre !== null){ %> <%=nombre %> <% }%></strong></h5>
+        <h5 style="color: #74DF00;">Usuario : <strong><% if(nombre !== null){ %> <%=nombre %> <% }%></strong></h5>
         
         <br>
         <% if(error !== null){ %>
@@ -119,22 +119,22 @@
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
           <span class="sr-only">Error:<%= error %></span>
           </div>
-        <% }else{ %>
-        <form action="/mandarSms">
-        	<input type="hidden" value="<%=resultado%>" name="lista">
-		  <h6>Cuando quieras enviar la lista puedes hacer click en enviar</h6>
-		  <small>Para volver al inicio click <a href="localhost:4000">aqui</a></small><br>
-		  <button type="submit" class="btn btn-primary">Enviar</button>
-		</form>
-        <% }%>
-
+        <% } %>
+        <% if(estado !== null){ %>
+          <div class="alert alert-info" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span class="sr-only">Estado:<%= estado %></span>
+          </div>
+        <% } %>
+                
+        <form action="/subir" method="post"><input type="submit"  name="" value="Ir a subir"></form>
         <% if(resultado !== null){  var c = 0 ;%>
 	        <table class="table">
 					  <thead>
 					    <tr>
 					      <th scope="col">#</th>
-					      <th scope="col">Numeros</th>
-					      <th scope="col">Mensajes</th>					      
+					      <th scope="col">Nombre</th>
+					      				      
 					    </tr>
 					  </thead>
 					  <tbody>
@@ -143,8 +143,8 @@
 
 				    <tr>
 				      <th scope="row"><%= c %></th>
-				      <td><%= row.numeros  %></td>
-				      <td><%= row.mensaje  %></td>
+				      <td><%= row.Nombre  %></td>
+				      <td><form action="/verLista" method="post"><input type="submit" name="" value="Ver"> <input type="hidden"  value='<%= row.idLista %>' name="idLista"></form></td>
 				    </tr>
 
   				
